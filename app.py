@@ -5,7 +5,7 @@ from werkzeug.contrib.fixers import ProxyFix
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 api = Api(app, version='1.0', title='VNU API',
-          description='A simple connect daotao.vnu.edu.vn API',
+          description='A simple connect daotao.vnu.edu.vn API by Huaan',
           )
 
 ns = api.namespace('crawler', description='CRAWLER operations')
