@@ -14,8 +14,8 @@ def getGPAInfo(username="17020781", password="341997mok"):
     # Selenium
     options = webdriver.ChromeOptions()
     options.add_argument('ignore-certificate-errors')
-    driver = webdriver.Chrome(
-        ChromeDriverManager().install(), chrome_options=options)
+    # driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+    driver = webdriver.Chrome('./chromedriver', chrome_options=options)
     url = 'http://daotao.vnu.edu.vn'
     print("Loading url=", url)
     driver.get(url)
