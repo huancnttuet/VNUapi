@@ -7,15 +7,19 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
+import os
 
 
 def getGPAInfo(username="17020781", password="341997mok"):
 
     # Selenium
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
     options = webdriver.ChromeOptions()
     options.add_argument('ignore-certificate-errors')
     # driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
-    driver = webdriver.Chrome('./chromedriver', chrome_options=options)
+    driver = webdriver.Chrome(
+        ROOT_DIR + '/chromedriver', chrome_options=options)
     url = 'http://daotao.vnu.edu.vn'
     print("Loading url=", url)
     driver.get(url)
