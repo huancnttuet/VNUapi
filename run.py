@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 from werkzeug.contrib.fixers import ProxyFix
-from api.utils import daotao
+from api.services import daotao
 
 
 app = Flask(__name__)
