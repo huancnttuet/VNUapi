@@ -7,6 +7,8 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
+import os
+os.chmod('./chromedriver', '0755')
 
 
 def getGPAInfo(username="17020781", password="341997mok"):
