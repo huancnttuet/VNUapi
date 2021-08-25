@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 from werkzeug.contrib.fixers import ProxyFix
-from api.utils.run import getGPAInfo
+from api.utils import daotao
 
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ model = api.model('Model', {
 class Todo(Resource):
 
     def get(self, **kwargs):
-        data = getGPAInfo()
+        data = daotao.getGPAInfo()
         return data  # Some function that queries the db
 
 
