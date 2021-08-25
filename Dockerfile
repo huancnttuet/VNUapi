@@ -12,4 +12,4 @@ COPY . .
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 
-RUN ["chmod", "777", "./chromedriver"]
+RUN ["chmod", "777", "api/services/chromedriver"]
