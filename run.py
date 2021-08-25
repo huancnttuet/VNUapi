@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 from werkzeug.contrib.fixers import ProxyFix
-from app.utils.run import getGPAInfo
+from api.utils.run import getGPAInfo
 
 
 app = Flask(__name__)
