@@ -16,6 +16,9 @@ def getGPAInfo(username="17020781", password="341997mok"):
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
     options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('ignore-certificate-errors')
     # driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
     driver = webdriver.Chrome(
