@@ -44,7 +44,7 @@ def get_file(path):
 
 @ns.route("/files/<filename>", methods=["POST"])
 def post_file(filename):
-    """Upload a file."""
+    """ Upload a file."""
 
     if "/" in filename:
         # Return 400 BAD REQUEST
