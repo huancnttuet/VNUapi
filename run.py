@@ -27,7 +27,7 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 @ns.route("/files")
 class File(Resource):
-    def list_files():
+    def get():
         """Endpoint to list files on the server."""
         files = []
         for filename in os.listdir(UPLOAD_DIRECTORY):
@@ -39,14 +39,14 @@ class File(Resource):
 
 @ns.route("/files/<path:path>")
 class FilePath(Resource):
-    def get_file(path):
+    def get(path):
         """Download a file."""
         return send_from_directory(UPLOAD_DIRECTORY, path, as_attachment=True)
 
 
 @ns.route("/files/<filename>", methods=["POST"])
 class FileUpload(Resource):
-    def post_file(filename):
+    def post(filename):
         """ Upload a file."""
 
         if "/" in filename:
