@@ -26,35 +26,38 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 
 @ns.route("/files")
-def list_files():
-    """Endpoint to list files on the server."""
-    files = []
-    for filename in os.listdir(UPLOAD_DIRECTORY):
-        path = os.path.join(UPLOAD_DIRECTORY, filename)
-        if os.path.isfile(path):
-            files.append(filename)
-    return jsonify(files)
+class File(Resource):
+    def list_files():
+        """Endpoint to list files on the server."""
+        files = []
+        for filename in os.listdir(UPLOAD_DIRECTORY):
+            path = os.path.join(UPLOAD_DIRECTORY, filename)
+            if os.path.isfile(path):
+                files.append(filename)
+        return jsonify(files)
 
 
 @ns.route("/files/<path:path>")
-def get_file(path):
-    """Download a file."""
-    return send_from_directory(UPLOAD_DIRECTORY, path, as_attachment=True)
+class FilePath(Resource):
+    def get_file(path):
+        """Download a file."""
+        return send_from_directory(UPLOAD_DIRECTORY, path, as_attachment=True)
 
 
 @ns.route("/files/<filename>", methods=["POST"])
-def post_file(filename):
-    """ Upload a file."""
+class FileUpload(Resource):
+    def post_file(filename):
+        """ Upload a file."""
 
-    if "/" in filename:
-        # Return 400 BAD REQUEST
-        abort(400, "no subdirectories allowed")
+        if "/" in filename:
+            # Return 400 BAD REQUEST
+            abort(400, "no subdirectories allowed")
 
-    with open(os.path.join(UPLOAD_DIRECTORY, filename), "wb") as fp:
-        fp.write(request.data)
+        with open(os.path.join(UPLOAD_DIRECTORY, filename), "wb") as fp:
+            fp.write(request.data)
 
-    # Return 201 CREATED
-    return "", 201
+        # Return 201 CREATED
+        return "", 201
 
 
 @ns.route('/getGPA')
